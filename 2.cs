@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 enum Menu //สร้างหน้าเมนูโดยการกำหนดค่า
 {
     Login = 1,//กำหนดค่า
@@ -8,7 +7,7 @@ enum Menu //สร้างหน้าเมนูโดยการกำห�
 }
 namespace _2
 {
-    class BookStore
+    class BookStore //สร้างClass BookStore
     {
         public List<string> BorrowList = new List<string>(); //สร้างListของBorrowList
         List<string> Borrowing = new List<string>(); //สร้างListของBorrowing
@@ -101,7 +100,7 @@ namespace _2
         static void InputMenu(Registor ListUser, string selectBook, string decide, BookStore bookStore, Data BorrowingUser) //สร้างmethod InputMenu ใส่ค่าเมนูแรก
         {
             Console.Write("Select Menu: ");//แสดงข้อความ
-            Menu menu = (Menu)int.Parse(Console.ReadLine());//รับค่าจากkeyboard
+            Menu menu = (Menu)int.Parse(Console.ReadLine());//กำหนดค่าให้รับค่าจากkerboard
             PresentMenu(menu, ListUser, selectBook, decide, bookStore, BorrowingUser);//เรียกmethod PresentMenu
         }
         static void PresentMenu(Menu menu, Registor ListUser, string selectBook, string decide, BookStore bookStore, Data BorrowingUser) //สร้างmethod PresentMenu ใช้กำหนดเงื่อนไข
@@ -110,114 +109,114 @@ namespace _2
             {
                 Loginn(ListUser, selectBook,  decide,  bookStore, BorrowingUser); //ไปที่method Login
             }
-            else if (menu == Menu.Register)
+            else if (menu == Menu.Register)//กำหนดเงือนไข Menu.Login
             {
-                Registoration(ListUser, selectBook, decide, bookStore, BorrowingUser);
+                Registoration(ListUser, selectBook, decide, bookStore, BorrowingUser);//ไปที่method Registoration
             }
         }
-        static void Registoration(Registor ListUser, string selectBook, string decide, BookStore bookStore, Data BorrowingUser)
+        static void Registoration(Registor ListUser, string selectBook, string decide, BookStore bookStore, Data BorrowingUser)//สร้างmethod Registoration สำหรับการสมัคร
         {
-            Console.Clear();
+            Console.Clear();//เคลียร์หน้าจอแสดงผล
 
-            Console.WriteLine("Register new Person");
-            Console.WriteLine("------------------");
+            Console.WriteLine("Register new Person");//แสดงข้อความ
+            Console.WriteLine("------------------");//แสดงข้อความตกแต่ง
 
-            Console.Write("Input name: ");
-            BorrowingUser.User = Console.ReadLine();
+            Console.Write("Input name: ");//แสดงข้อความ
+            BorrowingUser.User = Console.ReadLine();//กำหนดค่าให้รับค่าจากkerboard
 
-            Console.Write("Input Password: ");
-            BorrowingUser.PassWord = Console.ReadLine();
+            Console.Write("Input Password: ");//แสดงข้อความ
+            BorrowingUser.PassWord = Console.ReadLine();//กำหนดค่าให้รับค่าจากkerboard
 
-            Console.Write("Input User Type 1 = Student, 2 = Employee: ");
-            BorrowingUser.Type = Console.ReadLine();
+            Console.Write("Input User Type 1 = Student, 2 = Employee: ");//แสดงข้อความ
+            BorrowingUser.Type = Console.ReadLine();//กำหนดค่าให้รับค่าจากkerboard
 
-            if (BorrowingUser.Type == "1")
+            if (BorrowingUser.Type == "1")//กำหนาดเงื่อนไข ถ้า BorrowingUser.Type == "1"
             {
-                Console.WriteLine("Student ID: 62130701103");
+                Console.WriteLine("Student ID: 62130701103");// //แสดงข้อความ
             }
-            else if (BorrowingUser.Type == "2")
+            else if (BorrowingUser.Type == "2")//กำหนาดเงื่อนไข ถ้า BorrowingUser.Type == "2"
             {
-                Console.WriteLine("Employee ID: 5214785");
+                Console.WriteLine("Employee ID: 5214785");////แสดงข้อความ
             }
-            ListUser.addList(BorrowingUser);
-            Console.WriteLine("Done");
-            
-            Console.Clear();
-            Menuscreen();
-            InputMenu(ListUser, selectBook, decide, bookStore, BorrowingUser);
+            ListUser.addList(BorrowingUser); //เก็บค่าของBorrowingUser
+            Console.WriteLine("Done"); //แสดงข้อความ
+
+            Console.Clear();//เคลียร์หน้าจอแสดงผล
+            Menuscreen();//เรียกmethod Menuscreen
+            InputMenu(ListUser, selectBook, decide, bookStore, BorrowingUser);//เรียกmethod InputMenu
         }
-        static void Loginn(Registor ListUser, string selectBook, string decide, BookStore bookStore, Data BorrowingUser)
+        static void Loginn(Registor ListUser, string selectBook, string decide, BookStore bookStore, Data BorrowingUser)//สร้างmethod Loginn สำหรับการเข้าสู่ระบบ
         {
-            Console.Clear();
-            Console.WriteLine("Login Screen");
-            Console.WriteLine("------------------");
-                Console.Write("Input name: ");
-            string LoginUser = Console.ReadLine();
-            Console.Write("Input Password: ");
-            string LoginPass = Console.ReadLine();
-            if (LoginUser == BorrowingUser.User)
+            Console.Clear();//เคลียร์หน้าจอแสดงผล
+            Console.WriteLine("Login Screen");//แสดงข้อความ
+            Console.WriteLine("------------------");//แสดงข้อความตกแต่ง
+            Console.Write("Input name: ");//แสดงข้อความ
+            string LoginUser = Console.ReadLine();//กำหนดค่าให้รับค่าจากkerboard
+            Console.Write("Input Password: ");//แสดงข้อความ
+            string LoginPass = Console.ReadLine();//กำหนดค่าให้รับค่าจากkerboard
+            if (LoginUser == BorrowingUser.User)//กำหนดเงื่อนไข ถ้าLoginUser == BorrowingUser.User
             {
-                if (LoginPass == BorrowingUser.PassWord)
+                if (LoginPass == BorrowingUser.PassWord)//กำหนดเงื่อนไข ถ้าLoginPass == BorrowingUser.PassWord
                 {
-                    ListUser.getList();
-                    Console.WriteLine("------------------");
-                    Book(selectBook, decide, bookStore);
+                    ListUser.getList();//เรียกmethod getList()ของListUser
+                    Console.WriteLine("------------------");//แสดงข้อความตกแต่ง
+                    Book(selectBook, decide, bookStore);//เรียกmethod Book
                 }
             }
-            else
+            else//นอกเหนือเงื่อนไข
             {
-                Console.WriteLine("------------------");
-                Console.WriteLine("  Worng!!!");
-                Console.WriteLine("------------------");
-                Console.WriteLine("Please Enter to continue");
-                Console.ReadLine();
-                Console.Clear();
-                Menuscreen();
-                InputMenu( ListUser, selectBook, decide, bookStore, BorrowingUser);
+                Console.WriteLine("------------------");//แสดงข้อความตกแต่ง
+                Console.WriteLine("  Worng!!!"); //แสดงข้อความ
+                Console.WriteLine("------------------");//แสดงข้อความตกแต่ง
+                Console.WriteLine("Please Enter to continue");//แสดงข้อความ
+                Console.ReadLine();//อ่านค่า
+                Console.Clear();//เคลียร์หน้าจอแสดงผล
+                Menuscreen();//เรียกmethod Menuscreen
+                InputMenu( ListUser, selectBook, decide, bookStore, BorrowingUser);//เรียกmethod InputMenu
             }
         }
-        static void Book(string selectBook, string decide, BookStore bookStore)
+        static void Book(string selectBook, string decide, BookStore bookStore)//
         {
-            do
+            do//ทำลูปกำหนดเงื่อนไขในขณะที่ decide ไม่เท่ากับ exit
             {
-                Console.WriteLine("Book List");
-                Console.WriteLine("------------");
-                foreach (string i in bookStore.BorrowList)
+                Console.WriteLine("Book List");//แสดงข้อความ
+                Console.WriteLine("------------");//แสดงข้อความตกแต่ง
+                foreach (string i in bookStore.BorrowList)//ทำลูบของ bookStore.BorrowList
                 {
-                    Console.WriteLine("Book ID: {0}", (bookStore.BorrowList.IndexOf(i) + 1) + " ");
-                    Console.Write("Book name: ");
-                    Console.WriteLine(i);
+                    Console.WriteLine("Book ID: {0}", (bookStore.BorrowList.IndexOf(i) + 1) + " ");//แสดงข้อความ
+                    Console.Write("Book name: ");//แสดงข้อความ
+                    Console.WriteLine(i);//แสดงข้อความ
                 }
-                Console.Write("Input book ID : ");
-                selectBook = Console.ReadLine();
-                switch (selectBook)
+                Console.Write("Input book ID : ");//แสดงข้อความ
+                selectBook = Console.ReadLine();//กำหนดค่าให้รับค่าจากkerboard
+                switch (selectBook)//กำหนดเงื่อนไขของ selectBook
                 {
-                    case "1":
-                        bookStore.addBorrowingList(bookStore.BorrowList[0]);
-                        Console.WriteLine("Added " + bookStore.BorrowList[0]);
-                        break;
-                    case "2":
-                        bookStore.addBorrowingList(bookStore.BorrowList[1]);
-                        Console.WriteLine("Added " + bookStore.BorrowList[1]);
-                        break;
-                    case "3":
-                        bookStore.addBorrowingList(bookStore.BorrowList[2]);
-                        Console.WriteLine("Added " + bookStore.BorrowList[2]);
-                        break;
-                    case "4":
-                        bookStore.addBorrowingList(bookStore.BorrowList[3]);
-                        Console.WriteLine("Added " + bookStore.BorrowList[3]);
-                        break;
-                    default:
-                        Console.WriteLine("Not Added to cart. found select number of flower");
-                        break;
+                    case "1"://กำหนดเงือนไข
+                        bookStore.addBorrowingList(bookStore.BorrowList[0]);//แอคค่าไปที่ addBorrowingList
+                        Console.WriteLine("Added " + bookStore.BorrowList[0]);//แสดงข้อความที่เราแอดค่าไป
+                        break;//หยุดการทำงาน
+                    case "2"://กำหนดเงือนไข
+                        bookStore.addBorrowingList(bookStore.BorrowList[1]);//แอคค่าไปที่ addBorrowingList
+                        Console.WriteLine("Added " + bookStore.BorrowList[1]);//แสดงข้อความที่เราแอดค่าไป
+                        break;//หยุดการทำงาน
+                    case "3"://กำหนดเงือนไข
+                        bookStore.addBorrowingList(bookStore.BorrowList[2]);//แอคค่าไปที่ addBorrowingList
+                        Console.WriteLine("Added " + bookStore.BorrowList[2]);//แสดงข้อความที่เราแอดค่าไป
+                        break;//หยุดการทำงาน
+                    case "4"://กำหนดเงือนไข
+                        bookStore.addBorrowingList(bookStore.BorrowList[3]);//แอคค่าไปที่ addBorrowingList
+                        Console.WriteLine("Added " + bookStore.BorrowList[3]);//แสดงข้อความที่เราแอดค่าไป
+                        break;//หยุดการทำงาน
+                    default://นอกเหนือจากเงื่อนไขที่กำหนด
+                        Console.WriteLine("Not Added to cart. found select number of flower");////แสดงข้อความ
+                        break;//หยุดการทำงาน
                 }
-                Console.WriteLine("You can stop this progress ? exit for >> exit << progress and pressany key for continue");
-                decide = Console.ReadLine();
-                Console.Clear();
+                Console.WriteLine("Type exit to end progress or press any key for continue");//แสดงข้อความ
+                decide = Console.ReadLine();//กำหนดค่าให้รับค่าจากkerboard
+                Console.Clear();//เคลียร์หน้าจอแสดงผล
             }
-            while (decide != "exit");
-            bookStore.BorrowResult();
+            while (decide != "exit");//ทำลูปกำหนดเงื่อนไขในขณะที่ decide ไม่เท่ากับ exit
+            bookStore.BorrowResult();//เรียกmethod BorrowResultของ bookStore
         }
     }
 }
