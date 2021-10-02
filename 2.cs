@@ -1,151 +1,152 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-enum Menu
+enum Menu //สร้างหน้าเมนูโดยการกำหนดค่า
 {
-    Login = 1,
-    Register = 2
+    Login = 1,//กำหนดค่า
+    Register = 2//กำหนดค่า
 }
 namespace _2
 {
     class BookStore
     {
-        public List<string> BorrowList = new List<string>();
-        List<string> Borrowing = new List<string>();
-        public BookStore()
+        public List<string> BorrowList = new List<string>(); //สร้างListของBorrowList
+        List<string> Borrowing = new List<string>(); //สร้างListของBorrowing
+        public BookStore() //ประกาศ class
         {
-            BorrowList.Add("NOW I UNDERSTAND");
-            BorrowList.Add("REVOLUTIONARY WEALTH");
-            BorrowList.Add("Six Degrees");
-            BorrowList.Add("Les Vacances");
+            BorrowList.Add("NOW I UNDERSTAND");//add List ชื่อหนังสื้อ
+            BorrowList.Add("REVOLUTIONARY WEALTH");//add List ชื่อหนังสื้อ
+            BorrowList.Add("Six Degrees");//add List ชื่อหนังสื้อ
+            BorrowList.Add("Les Vacances");//add List ชื่อหนังสื้อ
         }
-        public void addToCart(string name)
+        public void addBorrowingList(string name) //ประกาศmethod addToCart ที่เอาไว้เก็บ list ของBorrowing
         {
-            Borrowing.Add(name);
+            Borrowing.Add(name); //เก็บ list ของBorrowing
         }
 
-        public void BorrowResult()
+        public void BorrowResult() //ประกาศmethod BorrowResult เอาไว้แสดงหนังสือที่ยืมไป
         {
-            if (Borrowing.Count == 0)
+            if (Borrowing.Count == 0)//กำหนดเงื่อนไข ถ้าตรงตามเงื่อนไข
             {
-                Console.WriteLine("No borrowing");
+                Console.WriteLine("No borrowing");//แสดงข้อความ
             }
-            else
+            else//นอกเหนือเงื่อนไข
             {
-                Console.WriteLine("Brrowing List:");
-                foreach (string i in Borrowing)
+                Console.WriteLine("Brrowing List:");//แสดงข้อความ
+                foreach (string i in Borrowing)//สร้างลูปที่แสดงหนังลือที่ยืมทั้งหมด
                 {
-                    Console.WriteLine(i);
+                    Console.WriteLine(i);//แสดงข้อความลูปที่แสดงหนังลือที่ยืมทั้งหมด
                 }
             }
         }
     }
-    class Data
+    class Data //สร้างclassที่จะเป็นinheritance
     {
-        public string User;
-        public string PassWord;
-        public string Type;
+        public string User; //ประกาศตัวแปรชนิดstring
+        public string PassWord; //ประกาศตัวแปรชนิดstring
+        public string Type; //ประกาศตัวแปรชนิดstring
     }
-    class Registor : Data
+    class Registor : Data //สร้างclassที่มีinheritance
     {
-        private List<Data> Account;
-        public Registor()
+        private List<Data> Account; //สร้างlistของAccount
+        public Registor() //ประกาศclass
         {
-            Account = new List<Data>();
+            Account = new List<Data>(); //กำหนดให้ Accountเก็บค่าที่Data
         }
-        public void addList(Data account)
+        public void addList(Data account) //ประกาศmethod addList ที่เอาไว้เก็บ list ของAccount
         {
-            Account.Add(account);
+            Account.Add(account);//เก็บ list ของAccount
         }
-        public void getList()
+        public void getList() //สร้างmethodที่เรียกlist ของAccountออกมาดูได้
+
         {
-            foreach (Data account in Account)
+            foreach (Data account in Account) //สร้างลูปเพื่อพิมพ์
             {
-                if(account.Type == "1")
+                if(account.Type == "1") //กำหนดเงื่อนไข ถ้าaccount.Type == "1"
                 {
-                    Console.WriteLine("Student Management");
-                    Console.WriteLine("------------------");
-                    Console.WriteLine("Name:{0}", account.User);
-                    Console.WriteLine("Student ID:62130701103", account.Type);
+                    Console.WriteLine("Student Management"); //แสดงข้อความ
+                    Console.WriteLine("------------------"); //แสดงข้อความตกแต่ง
+                    Console.WriteLine("Name:{0}", account.User); //แสดงข้อความโดยอิงค่าจาก account.User
+                    Console.WriteLine("Student ID:62130701103", account.Type);//แสดงข้อความโดยอิงค่าจาก account.Type
                 }
-                else if (account.Type == "2")
+                else if (account.Type == "2") //กำหนดเงื่อนไข ถ้าaccount.Type == "2"
                 {
-                    Console.WriteLine("Employee Management");
-                    Console.WriteLine("------------------");
-                    Console.WriteLine("Name:{0}", account.User);
-                    Console.WriteLine("Employee ID:5214785", account.Type);
+                    Console.WriteLine("Employee Management");//แสดงข้อความ
+                    Console.WriteLine("------------------");//แสดงข้อความตกแต่ง
+                    Console.WriteLine("Name:{0}", account.User); //แสดงข้อความโดยอิงค่าจาก account.User
+                    Console.WriteLine("Employee ID:5214785", account.Type);//แสดงข้อความโดยอิงค่าจาก account.Type
                 }
             }
         }
     }
-    class Program
+    class Program //class พื้นฐาน
     {
-        static void Main(string[] args)
+        static void Main(string[] args)//method พื้นฐาน
         {
-            string decide = "y";
-            string selectBook = "";
-            BookStore bookStore = new BookStore();
-            Registor ListUser = new Registor();
-            Menuscreen();
-            InputMenu(ListUser, selectBook, decide, bookStore);
+            string decide = "y"; //ประกาศตัวแปรชนิดstring
+            string selectBook = "";//ประกาศตัวแปรชนิดstring
+            BookStore bookStore = new BookStore(); //ประกาศตัวแปรของClass
+            Registor ListUser = new Registor();//ประกาศตัวแปรของClass
+            Data BorrowingUser = new Data();//ประกาศตัวแปรของClass
+            Menuscreen();//เรียกmethod Menuscreen
+            InputMenu(ListUser, selectBook, decide, bookStore, BorrowingUser);//เรียกmethod InputMenu
         }
-        static void Menuscreen()
+        static void Menuscreen()//สร้างmethod Menuscreen เมนูแรก
         {
-            Console.WriteLine("Welcome to Digital Library");
-            Console.WriteLine("---------------------------");
-            Console.WriteLine("1.Login");
-            Console.WriteLine("2.Register");
+            Console.WriteLine("Welcome to Digital Library"); //แสดงข้อความ
+            Console.WriteLine("---------------------------"); //แสดงข้อความตกแต่ง
+            Console.WriteLine("1.Login"); //แสดงข้อความเพื่อให้รู้ค่าที่เราจะกรอก
+            Console.WriteLine("2.Register"); //แสดงข้อความเพื่อให้รู้ค่าที่เราจะกรอก
         }
-        static void InputMenu(Registor ListUser, string selectBook, string decide, BookStore bookStore)
+        static void InputMenu(Registor ListUser, string selectBook, string decide, BookStore bookStore, Data BorrowingUser) //สร้างmethod InputMenu ใส่ค่าเมนูแรก
         {
-            Console.Write("Select Menu: ");
-            Menu menu = (Menu)int.Parse(Console.ReadLine());
-            PresentMenu(menu, ListUser, selectBook, decide, bookStore);
+            Console.Write("Select Menu: ");//แสดงข้อความ
+            Menu menu = (Menu)int.Parse(Console.ReadLine());//รับค่าจากkeyboard
+            PresentMenu(menu, ListUser, selectBook, decide, bookStore, BorrowingUser);//เรียกmethod PresentMenu
         }
-        static void PresentMenu(Menu menu, Registor ListUser, string selectBook, string decide, BookStore bookStore)
+        static void PresentMenu(Menu menu, Registor ListUser, string selectBook, string decide, BookStore bookStore, Data BorrowingUser) //สร้างmethod PresentMenu ใช้กำหนดเงื่อนไข
         {
-            if (menu == Menu.Login)
+            if (menu == Menu.Login)//กำหนดเงือนไข ถ้าเท่ากับMenu.Login
             {
-                Loginn(ListUser, selectBook,  decide,  bookStore);
+                Loginn(ListUser, selectBook,  decide,  bookStore, BorrowingUser); //ไปที่method Login
             }
             else if (menu == Menu.Register)
             {
-                Registoration(ListUser, selectBook, decide, bookStore);
+                Registoration(ListUser, selectBook, decide, bookStore, BorrowingUser);
             }
         }
-        static void Registoration(Registor ListUser, string selectBook, string decide, BookStore bookStore)
+        static void Registoration(Registor ListUser, string selectBook, string decide, BookStore bookStore, Data BorrowingUser)
         {
             Console.Clear();
-            Data B = new Data();
 
             Console.WriteLine("Register new Person");
             Console.WriteLine("------------------");
 
             Console.Write("Input name: ");
-            B.User = Console.ReadLine();
+            BorrowingUser.User = Console.ReadLine();
 
             Console.Write("Input Password: ");
-            B.PassWord = Console.ReadLine();
+            BorrowingUser.PassWord = Console.ReadLine();
 
             Console.Write("Input User Type 1 = Student, 2 = Employee: ");
-            B.Type = Console.ReadLine();
+            BorrowingUser.Type = Console.ReadLine();
 
-            if (B.Type == "1")
+            if (BorrowingUser.Type == "1")
             {
                 Console.WriteLine("Student ID: 62130701103");
             }
-            else if (B.Type == "2")
+            else if (BorrowingUser.Type == "2")
             {
                 Console.WriteLine("Employee ID: 5214785");
             }
-            ListUser.addList(B);
+            ListUser.addList(BorrowingUser);
             Console.WriteLine("Done");
             
             Console.Clear();
             Menuscreen();
-            InputMenu(ListUser, selectBook, decide, bookStore);
+            InputMenu(ListUser, selectBook, decide, bookStore, BorrowingUser);
         }
-        static void Loginn(Registor ListUser, string selectBook, string decide, BookStore bookStore)
+        static void Loginn(Registor ListUser, string selectBook, string decide, BookStore bookStore, Data BorrowingUser)
         {
             Console.Clear();
             Console.WriteLine("Login Screen");
@@ -154,14 +155,13 @@ namespace _2
             string LoginUser = Console.ReadLine();
             Console.Write("Input Password: ");
             string LoginPass = Console.ReadLine();
-            if (LoginUser == "kittinum")
+            if (LoginUser == BorrowingUser.User)
             {
-                if (LoginPass == "1234")
+                if (LoginPass == BorrowingUser.PassWord)
                 {
                     ListUser.getList();
                     Console.WriteLine("------------------");
                     Book(selectBook, decide, bookStore);
-
                 }
             }
             else
@@ -169,15 +169,11 @@ namespace _2
                 Console.WriteLine("------------------");
                 Console.WriteLine("  Worng!!!");
                 Console.WriteLine("------------------");
-                Console.WriteLine("  Hint\n" +
-                    "Name: kittinum\n" +
-                    "Password: 1234");
-                Console.WriteLine("------------------");
                 Console.WriteLine("Please Enter to continue");
                 Console.ReadLine();
                 Console.Clear();
                 Menuscreen();
-                InputMenu( ListUser, selectBook, decide, bookStore);
+                InputMenu( ListUser, selectBook, decide, bookStore, BorrowingUser);
             }
         }
         static void Book(string selectBook, string decide, BookStore bookStore)
@@ -197,19 +193,19 @@ namespace _2
                 switch (selectBook)
                 {
                     case "1":
-                        bookStore.addToCart(bookStore.BorrowList[0]);
+                        bookStore.addBorrowingList(bookStore.BorrowList[0]);
                         Console.WriteLine("Added " + bookStore.BorrowList[0]);
                         break;
                     case "2":
-                        bookStore.addToCart(bookStore.BorrowList[1]);
+                        bookStore.addBorrowingList(bookStore.BorrowList[1]);
                         Console.WriteLine("Added " + bookStore.BorrowList[1]);
                         break;
                     case "3":
-                        bookStore.addToCart(bookStore.BorrowList[2]);
+                        bookStore.addBorrowingList(bookStore.BorrowList[2]);
                         Console.WriteLine("Added " + bookStore.BorrowList[2]);
                         break;
                     case "4":
-                        bookStore.addToCart(bookStore.BorrowList[3]);
+                        bookStore.addBorrowingList(bookStore.BorrowList[3]);
                         Console.WriteLine("Added " + bookStore.BorrowList[3]);
                         break;
                     default:
