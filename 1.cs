@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 enum Menu //สร้างหน้าเมนูโดยการกำหนดค่า
 {
@@ -10,9 +9,9 @@ enum Menu //สร้างหน้าเมนูโดยการกำห�
 
 namespace ConsoleApplication6
 {
-    class Program
+    class Program //class พื้นฐาน
     {
-        static void Main(string[] args)
+        static void Main(string[] args) //method พื้นฐาน
         {
             Menuscreen(); //เรียกMethod Menuscreen
             InputMenu(); //เรียกMethod InputMenu
